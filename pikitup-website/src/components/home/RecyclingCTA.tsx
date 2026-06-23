@@ -16,7 +16,7 @@ export default function RecyclingCTA() {
       <div className="max-w-7xl mx-auto">
         <div className="rounded-3xl overflow-hidden shadow-2xl shadow-green-900/10 grid lg:grid-cols-2">
           {/* Left: content */}
-          <SlideIn direction="left" className="bg-white p-10 md:p-14 flex flex-col justify-center">
+          <SlideIn direction="left" className="bg-white p-6 sm:p-10 md:p-14 flex flex-col justify-center">
             <span className="section-label">Sustainability</span>
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-5 leading-tight">
               Join Johannesburg&apos;s<br />
@@ -58,7 +58,7 @@ export default function RecyclingCTA() {
           </SlideIn>
 
           {/* Right: dark panel with image + facts */}
-          <SlideIn direction="right" className="relative bg-green-950 p-10 md:p-14 flex flex-col justify-center overflow-hidden">
+          <SlideIn direction="right" className="relative bg-green-950 p-6 sm:p-10 md:p-14 flex flex-col justify-center overflow-hidden">
             {/* Background image */}
             <div className="absolute inset-0">
               <Image
@@ -80,7 +80,7 @@ export default function RecyclingCTA() {
                 {facts.map((fact) => (
                   <FadeIn key={fact.stat}>
                     <div className="flex items-start gap-5">
-                      <div className="text-4xl font-black text-yellow-300 w-28 shrink-0 leading-none">
+                      <div className="text-3xl sm:text-4xl font-black text-yellow-300 w-20 sm:w-28 shrink-0 leading-none">
                         {fact.stat}
                       </div>
                       <div className="flex items-start gap-3 pt-1">

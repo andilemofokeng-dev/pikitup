@@ -1,10 +1,12 @@
 import type {
   User, Complaint, ComplaintStatus, Facility,
   DashboardStats, Depot, AuditLog, ApiResponse, PaginatedResponse,
+  CollectionSchedule, Notification, Invoice, BusinessServiceAgreement,
 } from "./types";
 import {
   DEMO_USERS, MOCK_COMPLAINTS, MOCK_FACILITIES,
   MOCK_STATS, MOCK_DEPOTS, MOCK_AUDIT_LOGS,
+  MOCK_SCHEDULE, MOCK_NOTIFICATIONS, MOCK_INVOICES, MOCK_SERVICE_AGREEMENT,
 } from "./mock-data";
 
 // Simulated network delay (ms)
@@ -128,4 +130,71 @@ export async function apiGetUsers(): Promise<ApiResponse<User[]>> {
 export async function apiGetAuditLogs(): Promise<ApiResponse<AuditLog[]>> {
   await delay();
   return ok([...MOCK_AUDIT_LOGS]);
+}
+
+// ─── Resident / Business complaint submission ───────────────
+export async function apiSubmitComplaint(payload: {
+  type: Complaint["type"];
+  description: string;
+  address: string;
+  suburb: string;
+  region: string;
+  userId: string;
+  priority?: Complaint["priority"];
+}): Promise<ApiResponse<Complaint>> {
+  await delay(600);
+  const ref = `PKT-2026-${String(complaints.length + 1).padStart(6, "0")}`;
+  const now = new Date().toISOString();
+  const newComplaint: Complaint = {
+    id: `cmp-${Date.now()}`,
+    referenceNumber: ref,
+    type: payload.type,
+    status: "submitted",
+    description: payload.description,
+    address: payload.address,
+    suburb: payload.suburb,
+    region: payload.region,
+    photoUrls: [],
+    createdAt: now,
+    updatedAt: now,
+    userId: payload.userId,
+    priority: payload.priority ?? "medium",
+    isOverdue: false,
+    notes: [],
+  };
+  complaints = [newComplaint, ...complaints];
+  return ok(newComplaint);
+}
+
+export async function apiGetResidentComplaints(userId: string): Promise<PaginatedResponse<Complaint>> {
+  await delay();
+  const filtered = complaints.filter((c) => c.userId === userId);
+  return { data: filtered, total: filtered.length, page: 1, pageSize: 50, totalPages: 1 };
+}
+
+export async function apiGetMySchedule(): Promise<ApiResponse<CollectionSchedule>> {
+  await delay(200);
+  return ok({ ...MOCK_SCHEDULE });
+}
+
+export async function apiGetMyNotifications(): Promise<ApiResponse<Notification[]>> {
+  await delay(200);
+  return ok([...MOCK_NOTIFICATIONS]);
+}
+
+// ─── Business Portal ───────────────────────────────────────
+export async function apiGetBusinessComplaints(userId: string): Promise<PaginatedResponse<Complaint>> {
+  await delay();
+  const filtered = complaints.filter((c) => c.userId === userId);
+  return { data: filtered, total: filtered.length, page: 1, pageSize: 50, totalPages: 1 };
+}
+
+export async function apiGetBusinessInvoices(): Promise<ApiResponse<Invoice[]>> {
+  await delay(200);
+  return ok([...MOCK_INVOICES]);
+}
+
+export async function apiGetBusinessServiceAgreement(): Promise<ApiResponse<BusinessServiceAgreement>> {
+  await delay(200);
+  return ok({ ...MOCK_SERVICE_AGREEMENT });
 }

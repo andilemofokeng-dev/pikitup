@@ -13,7 +13,7 @@ const residentPerks = [
 
 export default function PortalCTA() {
   return (
-    <section className="relative py-24 px-4 bg-gray-900 overflow-hidden">
+    <section className="relative py-16 md:py-24 px-4 bg-gray-900 overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
@@ -28,7 +28,7 @@ export default function PortalCTA() {
       </div>
 
       <div className="relative max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left */}
           <FadeIn>
             <span className="section-label text-green-400">Digital Services</span>

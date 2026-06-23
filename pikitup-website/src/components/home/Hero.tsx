@@ -22,7 +22,7 @@ export default function Hero() {
   const [query, setQuery] = useState("");
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-green-950">
+    <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-green-950">
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
@@ -78,7 +78,7 @@ export default function Hero() {
       </div>
 
       {/* Main content */}
-      <div className="relative max-w-7xl mx-auto px-4 py-28 w-full">
+      <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-20 md:py-28 w-full">
         <div className="max-w-[720px]">
 
           {/* Official badge pill */}
@@ -86,7 +86,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE }}
-            className="mb-12"
+            className="mb-8 sm:mb-12"
           >
             <span className="inline-flex items-center gap-2.5 glass rounded-full px-5 py-2.5 text-sm text-white border border-white/20">
               <span className="relative flex h-2 w-2">
@@ -100,7 +100,7 @@ export default function Hero() {
 
           {/* ── BIG LOGO — hero centrepiece ── */}
           <motion.div
-            className="relative inline-flex mb-12"
+            className="relative inline-flex mb-8 sm:mb-12"
             initial={{ opacity: 0, scale: 0.45, filter: "blur(28px)" }}
             animate={{ opacity: 1, scale: 1,    filter: "blur(0px)" }}
             transition={{ duration: 1.4, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
@@ -166,7 +166,7 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative bg-white rounded-3xl px-10 py-7 shadow-2xl shadow-black/40"
+              className="relative bg-white rounded-3xl px-5 py-4 sm:px-10 sm:py-7 shadow-2xl shadow-black/40"
             >
               {/* Card inner glow edge */}
               <div className="absolute inset-0 rounded-3xl ring-1 ring-white/60 pointer-events-none" />
@@ -188,20 +188,21 @@ export default function Hero() {
             transition={{ duration: 0.65, delay: 0.55, ease: EASE }}
             className="mb-7"
           >
-            <div className="flex gap-2 max-w-xl bg-white rounded-2xl p-2 shadow-2xl shadow-black/30">
-              <div className="flex items-center gap-2.5 flex-1 pl-3">
+            <div className="flex gap-2 max-w-xl bg-white rounded-2xl p-1.5 sm:p-2 shadow-2xl shadow-black/30">
+              <div className="flex items-center gap-2 flex-1 pl-2 sm:pl-3">
                 <Search className="w-4 h-4 text-gray-400 shrink-0" />
                 <input
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Enter your suburb or street name..."
-                  className="flex-1 outline-none text-gray-800 text-sm bg-transparent placeholder:text-gray-400"
+                  placeholder="Your suburb or street..."
+                  className="flex-1 outline-none text-gray-800 text-sm bg-transparent placeholder:text-gray-400 min-w-0"
                 />
               </div>
               <Link href={`/collection-schedule${query ? `?q=${encodeURIComponent(query)}` : ""}`}>
-                <Button variant="gold" className="shrink-0 font-bold shadow-lg">
-                  Find My Collection Day
+                <Button variant="gold" className="shrink-0 font-bold shadow-lg text-sm">
+                  <span className="hidden sm:inline">Find My Collection Day</span>
+                  <span className="sm:hidden">Search</span>
                 </Button>
               </Link>
             </div>
@@ -212,7 +213,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.65, ease: EASE }}
-            className="flex flex-wrap gap-3 mb-14"
+            className="flex flex-wrap gap-3 mb-10 sm:mb-14"
           >
             <Link href="/report">
               <Button variant="white" size="lg" className="group shadow-xl">
@@ -245,7 +246,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-wrap gap-8 pt-8 border-t border-white/10"
+            className="flex flex-wrap gap-4 sm:gap-8 pt-6 sm:pt-8 border-t border-white/10"
           >
             {[
               { value: "4,500+", label: "Employees" },

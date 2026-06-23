@@ -193,6 +193,31 @@ export interface BusinessProfile {
   accountRef?: string;
 }
 
+export interface Invoice {
+  id: string;
+  invoiceNumber: string;
+  period: string;
+  issueDate: string;
+  dueDate: string;
+  amount: number;
+  status: "paid" | "outstanding" | "overdue";
+  description: string;
+}
+
+export interface BusinessServiceAgreement {
+  accountRef: string;
+  serviceType: string;
+  collectionFrequency: string;
+  collectionDay: string;
+  nextCollection: string;
+  binSize: string;
+  binCount: number;
+  depot: string;
+  contractStart: string;
+  contractEnd: string;
+  status: "active" | "suspended" | "expired";
+}
+
 // ─── Audit ─────────────────────────────────────────────────
 export interface AuditLog {
   id: string;

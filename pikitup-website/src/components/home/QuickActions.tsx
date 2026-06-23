@@ -31,7 +31,7 @@ export default function QuickActions() {
           <p className="text-[11px] font-bold text-green-700 uppercase tracking-[0.2em] mb-5">
             Quick Actions
           </p>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3 [&>*:last-child]:col-start-2 sm:[&>*:last-child]:col-auto">
             {actions.map((action, i) => (
               <motion.div
                 key={action.href}

@@ -1,0 +1,96 @@
+{
+  "executives": [
+    {
+      "id": "md",
+      "name": "Ms Bukelwa Njingolo",
+      "title": "Managing Director",
+      "abbreviation": "MD",
+      "department": "Office of the Managing Director",
+      "bio": "Leading Pikitup Johannesburg as Managing Director, steering the company's integrated waste management mandate across all seven regions of Greater Johannesburg. Responsible for strategic direction, stakeholder engagement, and operational performance for over 1.2 million households.",
+      "imageUrl": "https://pikitup.co.za/wp-content/uploads/2023/05/crop-md-pikitup.png",
+      "email": "md@pikitup.co.za",
+      "order": 1
+    },
+    {
+      "id": "cfo",
+      "name": "Mr Litshani Matsila",
+      "title": "Chief Finance Officer",
+      "abbreviation": "CFO",
+      "department": "Finance & Revenue",
+      "bio": "Overseeing Pikitup's financial management, budget planning, and compliance with municipal finance legislation. Responsible for financial reporting, revenue management, and ensuring the entity's long-term fiscal sustainability.",
+      "imageUrl": "https://pikitup.co.za/wp-content/uploads/2023/04/Litshani-Matsila-removebg-preview-removebg-preview.png",
+      "email": "cfo@pikitup.co.za",
+      "order": 2
+    }
+  ],
+  "generalManagers": [
+    {
+      "id": "gm-1",
+      "name": "Nompumelelo Mthethwa",
+      "cluster": "Central Cluster",
+      "imageUrl": "https://ui-avatars.com/api/?name=Nompumelelo+Mthethwa&background=1e3a5f&color=93c5fd&bold=true&size=200&format=png",
+      "order": 1
+    },
+    {
+      "id": "gm-2",
+      "name": "Aluoneswi Mafunzwaini",
+      "cluster": "Central Cluster",
+      "imageUrl": "https://ui-avatars.com/api/?name=Aluoneswi+Mafunzwaini&background=1e3a5f&color=93c5fd&bold=true&size=200&format=png",
+      "order": 2
+    },
+    {
+      "id": "gm-3",
+      "name": "Angel Masia",
+      "cluster": "North Cluster",
+      "imageUrl": "https://ui-avatars.com/api/?name=Angel+Masia&background=0c4a6e&color=7dd3fc&bold=true&size=200&format=png",
+      "order": 3
+    }
+  ],
+  "depotManagers": [
+    { "id": "rm-avalon-1",     "name": "Busi Mmutle",           "depot": "Avalon Depot",       "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Busi+Mmutle&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",           "order": 10 },
+    { "id": "om-avalon-1",     "name": "Kefiloenyane Motaung",  "depot": "Avalon Depot",       "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Kefiloenyane+Motaung&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",  "order": 11 },
+    { "id": "rm-central-1",    "name": "Michael Titus",         "depot": "Central Camp Depot", "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Michael+Titus&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",         "order": 20 },
+    { "id": "om-central-1",    "name": "Jeffrey Mahlangu",      "depot": "Central Camp Depot", "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Jeffrey+Mahlangu&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",     "order": 21 },
+    { "id": "om-landfill-1",   "name": "Eric Sadiki",           "depot": "Robinson Landfill",  "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Eric+Sadiki&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",          "order": 30 },
+    { "id": "om-landfill-2",   "name": "Gerhard Loggenberg",    "depot": "Landfill Depot",     "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Gerhard+Loggenberg&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",   "order": 31 },
+    { "id": "om-landfill-3",   "name": "Sabona Malete",         "depot": "Landfill Depot",     "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Sabona+Malete&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",        "order": 32 },
+    { "id": "rm-marlboro-1",   "name": "Mlawuli Dlamini",       "depot": "Marlboro Depot",     "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Mlawuli+Dlamini&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",      "order": 40 },
+    { "id": "om-marlboro-1",   "name": "Esther Mtatyana",       "depot": "Marlboro Depot",     "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Esther+Mtatyana&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",     "order": 41 },
+    { "id": "om-midrand-1",    "name": "Cynthia Mphahlele",     "depot": "Midrand Depot",      "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Cynthia+Mphahlele&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",   "order": 50 },
+    { "id": "om-midrand-2",    "name": "Ettienne Maluleke",     "depot": "Midrand Depot",      "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Ettienne+Maluleke&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",   "order": 51 },
+    { "id": "om-midrand-3",    "name": "Farida Abrahams",       "depot": "Midrand Depot",      "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Farida+Abrahams&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",     "order": 52 },
+    { "id": "rm-norwood-1",    "name": "Mukhethwa Mudau",       "depot": "Norwood Depot",      "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Mukhethwa+Mudau&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",     "order": 60 },
+    { "id": "om-norwood-1",    "name": "Alex Isaacs",           "depot": "Norwood Depot",      "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Alex+Isaacs&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",         "order": 61 },
+    { "id": "om-norwood-2",    "name": "Philemon Mkhari",       "depot": "Norwood Depot",      "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Philemon+Mkhari&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",    "order": 62 },
+    { "id": "om-randburg-1",   "name": "Jeffrey Moloro",        "depot": "Randburg Depot",     "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Jeffrey+Moloro&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",     "order": 70 },
+    { "id": "om-randburg-2",   "name": "Edith Ndlovu",          "depot": "Randburg Depot",     "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Edith+Ndlovu&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",       "order": 71 },
+    { "id": "om-randburg-3",   "name": "Welcome Nkosi",         "depot": "Randburg Depot",     "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Welcome+Nkosi&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",      "order": 72 },
+    { "id": "rm-roodepoort-1", "name": "Mapitso Makwea",        "depot": "Roodepoort Depot",   "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Mapitso+Makwea&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",     "order": 80 },
+    { "id": "rm-selby-1",      "name": "Eddy Makhubela",        "depot": "Selby Depot",        "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Eddy+Makhubela&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",     "order": 90 },
+    { "id": "rm-selby-2",      "name": "David Mahlangu",        "depot": "Selby Depot",        "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=David+Mahlangu&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",     "order": 91 },
+    { "id": "om-selby-1",      "name": "Ernest Mbanu",          "depot": "Selby Depot",        "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Ernest+Mbanu&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",       "order": 92 },
+    { "id": "om-selby-2",      "name": "Zachariah Dzoye",       "depot": "Selby Depot",        "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Zachariah+Dzoye&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",    "order": 93 },
+    { "id": "rm-southdale-1",  "name": "Selinah Tshabalala",    "depot": "Southdale Depot",    "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Selinah+Tshabalala&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",  "order": 100 },
+    { "id": "om-southdale-1",  "name": "Mimi Kobuoe",           "depot": "Southdale Depot",    "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Mimi+Kobuoe&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",        "order": 101 },
+    { "id": "om-southdale-2",  "name": "Lucia Moeketsi",        "depot": "Southdale Depot",    "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Lucia+Moeketsi&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",    "order": 102 },
+    { "id": "rm-waterval-1",   "name": "Debbie Du Preez",       "depot": "Waterval Depot",     "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Debbie+Du+Preez&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",   "order": 110 },
+    { "id": "om-waterval-1",   "name": "Henry Lloyd",           "depot": "Waterval Depot",     "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Henry+Lloyd&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",       "order": 111 },
+    { "id": "rm-zondi-1",      "name": "Sesi Moloi",            "depot": "Zondi Depot",        "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Sesi+Moloi&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",        "order": 120 },
+    { "id": "rm-misc-1",       "name": "Stella Wilson",         "depot": "—",                  "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Stella+Wilson&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",     "order": 130 }
+  ],
+  "depots": [
+    "Avalon Depot",
+    "Central Camp Depot",
+    "Marlboro Depot",
+    "Midrand Depot",
+    "Norwood Depot",
+    "Randburg Depot",
+    "Roodepoort Depot",
+    "Selby Depot",
+    "Southdale Depot",
+    "Waterval Depot",
+    "Zondi Depot",
+    "Robinson Landfill",
+    "Landfill Depot"
+  ]
+}

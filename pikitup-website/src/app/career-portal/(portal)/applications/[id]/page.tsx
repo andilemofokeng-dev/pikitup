@@ -40,6 +40,7 @@ export default function ApplicationDetailPage() {
   const isRejected = app.status === "rejected" || app.status === "withdrawn";
 
   async function saveChanges() {
+    if (!app) return;
     setSaving(true);
     await new Promise((r) => setTimeout(r, 500));
     const updated = { ...app };

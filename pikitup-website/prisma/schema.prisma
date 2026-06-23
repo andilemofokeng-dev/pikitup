@@ -1,0 +1,121 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Executive {
+  id           String   @id @default(cuid())
+  name         String
+  title        String
+  abbreviation String
+  department   String
+  bio          String   @db.Text
+  imageUrl     String?
+  email        String?
+  order        Int      @default(99)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("executives")
+}
+
+model GeneralManager {
+  id        String   @id @default(cuid())
+  name      String
+  cluster   String
+  imageUrl  String?
+  order     Int      @default(99)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("general_managers")
+}
+
+model DepotManager {
+  id        String   @id @default(cuid())
+  name      String
+  depot     String
+  role      String
+  imageUrl  String?
+  order     Int      @default(99)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("depot_managers")
+}
+
+model Depot {
+  id    String @id @default(cuid())
+  name  String @unique
+  order Int    @default(99)
+
+  @@map("depots")
+}
+
+model Article {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  category    String    @default("News")
+  excerpt     String    @db.Text
+  body        String    @db.Text
+  status      String    @default("draft")
+  author      String
+  imageUrl    String?
+  region      String?   @default("All")
+  tags        String?
+  views       Int       @default(0)
+  publishedAt DateTime?
+  scheduledAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("articles")
+}
+
+model Notice {
+  id        String    @id @default(cuid())
+  title     String
+  body      String    @db.Text
+  type      String    @default("info")
+  region    String    @default("All Regions")
+  active    Boolean   @default(true)
+  expiresAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@map("notices")
+}
+
+model AnnualReport {
+  id          String   @id @default(cuid())
+  title       String
+  year        String
+  type        String   @default("Integrated Annual Report")
+  description String   @db.Text
+  pages       Int?
+  pdfUrl      String?
+  viewUrl     String?
+  isLatest    Boolean  @default(false)
+  order       Int      @default(99)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("annual_reports")
+}
+
+model CorporateDocument {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @db.Text
+  category    String   @default("Corporate")
+  fileUrl     String?
+  order       Int      @default(99)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("corporate_documents")
+}

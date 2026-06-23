@@ -6,7 +6,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
   LayoutDashboard, Newspaper, Bell, Briefcase, HelpCircle,
-  MapPin, FileText, LogOut, ChevronRight, Menu, X,
+  MapPin, FileText, LogOut, ChevronRight, Menu, X, Users, BookOpen,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -14,9 +14,11 @@ const navSections = [
   {
     label: "Content",
     items: [
-      { href: "/cms-portal/dashboard",  label: "Dashboard",     icon: LayoutDashboard },
-      { href: "/cms-portal/articles",   label: "News & Articles", icon: Newspaper },
-      { href: "/cms-portal/notices",    label: "Service Notices", icon: Bell },
+      { href: "/cms-portal/dashboard",      label: "Dashboard",      icon: LayoutDashboard },
+      { href: "/cms-portal/articles",       label: "News & Articles", icon: Newspaper },
+      { href: "/cms-portal/notices",        label: "Service Notices", icon: Bell },
+      { href: "/cms-portal/leadership",     label: "Leadership",      icon: Users },
+      { href: "/cms-portal/annual-reports", label: "Annual Reports",  icon: BookOpen },
     ],
   },
   {

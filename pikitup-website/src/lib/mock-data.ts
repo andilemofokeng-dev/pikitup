@@ -1,7 +1,7 @@
 import type {
   User, Complaint, Facility, Notification,
   DashboardStats, Depot, CollectionSchedule, AuditLog,
-  CareerVacancy, Application,
+  CareerVacancy, Application, Invoice, BusinessServiceAgreement,
 } from "./types";
 
 // ─── Demo Users ────────────────────────────────────────────
@@ -91,6 +91,31 @@ export const MOCK_COMPLAINTS: Complaint[] = [
     address: "Sandton City Taxi Rank", suburb: "Sandton", region: "Region A — Johannesburg North",
     photoUrls: [], createdAt: "2026-06-09T07:30:00Z", updatedAt: "2026-06-09T07:30:00Z",
     userId: "usr-001", priority: "medium", isOverdue: false, notes: [],
+  },
+  // Business user complaints (usr-002)
+  {
+    id: "cmp-b01", referenceNumber: "PKT-2026-000156",
+    type: "missed-collection", status: "resolved",
+    description: "Business collection at 88 Commerce Street was missed on Monday 1 June. We have 4 bins outstanding.",
+    address: "88 Commerce Street", suburb: "Randburg", region: "Region F — Johannesburg West",
+    photoUrls: [], createdAt: "2026-06-01T08:00:00Z", updatedAt: "2026-06-03T14:00:00Z",
+    userId: "usr-002", depotId: "dep-004", depotName: "Randburg Depot",
+    priority: "high", isOverdue: false,
+    notes: [
+      { id: "bn1", note: "Commercial collection team dispatched. Collection completed 3 June.", isInternal: false, createdBy: "usr-004", createdByName: "Lindiwe Khumalo", createdAt: "2026-06-03T14:00:00Z" },
+    ],
+  },
+  {
+    id: "cmp-b02", referenceNumber: "PKT-2026-000192",
+    type: "overflowing-bins", status: "in_progress",
+    description: "Our 240L bins at the rear of premises are overflowing. Collection was scheduled for Friday but did not happen.",
+    address: "88 Commerce Street", suburb: "Randburg", region: "Region F — Johannesburg West",
+    photoUrls: [], createdAt: "2026-06-07T10:00:00Z", updatedAt: "2026-06-08T09:00:00Z",
+    userId: "usr-002", depotId: "dep-004", depotName: "Randburg Depot",
+    priority: "medium", isOverdue: false,
+    notes: [
+      { id: "bn2", note: "Assigned to Randburg commercial team for Monday visit.", isInternal: false, createdBy: "usr-003", createdByName: "Nomsa Sithole", createdAt: "2026-06-08T09:00:00Z" },
+    ],
   },
   // Additional complaints for staff view
   {
@@ -363,3 +388,27 @@ export let MOCK_APPLICATIONS: Application[] = [
     notes: [],
   },
 ];
+
+// ─── Business Mock Data ────────────────────────────────────
+export const MOCK_INVOICES: Invoice[] = [
+  { id: "inv-001", invoiceNumber: "PIK-INV-2026-0431", period: "June 2026",   issueDate: "2026-06-01", dueDate: "2026-06-30", amount: 3850.00, status: "outstanding", description: "Commercial Waste Collection — June 2026" },
+  { id: "inv-002", invoiceNumber: "PIK-INV-2026-0389", period: "May 2026",    issueDate: "2026-05-01", dueDate: "2026-05-31", amount: 3850.00, status: "paid",        description: "Commercial Waste Collection — May 2026" },
+  { id: "inv-003", invoiceNumber: "PIK-INV-2026-0321", period: "April 2026",  issueDate: "2026-04-01", dueDate: "2026-04-30", amount: 3850.00, status: "paid",        description: "Commercial Waste Collection — April 2026" },
+  { id: "inv-004", invoiceNumber: "PIK-INV-2026-0255", period: "March 2026",  issueDate: "2026-03-01", dueDate: "2026-03-31", amount: 3850.00, status: "paid",        description: "Commercial Waste Collection — March 2026" },
+  { id: "inv-005", invoiceNumber: "PIK-INV-2026-0188", period: "February 2026",issueDate: "2026-02-01",dueDate: "2026-02-28", amount: 3750.00, status: "paid",        description: "Commercial Waste Collection — February 2026" },
+  { id: "inv-006", invoiceNumber: "PIK-INV-2026-0122", period: "January 2026",issueDate: "2026-01-01", dueDate: "2026-01-31", amount: 3750.00, status: "paid",        description: "Commercial Waste Collection — January 2026" },
+];
+
+export const MOCK_SERVICE_AGREEMENT: BusinessServiceAgreement = {
+  accountRef: "BIZ-RBG-2026-00234",
+  serviceType: "Commercial Waste Collection",
+  collectionFrequency: "3× per week",
+  collectionDay: "Monday, Wednesday, Friday",
+  nextCollection: "Monday, 23 June 2026",
+  binSize: "240 litre wheelie bins",
+  binCount: 4,
+  depot: "Randburg Depot",
+  contractStart: "2026-01-01",
+  contractEnd: "2026-12-31",
+  status: "active",
+};
