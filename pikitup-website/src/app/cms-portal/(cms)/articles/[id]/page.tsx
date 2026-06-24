@@ -2,6 +2,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { ArrowLeft, Save, Globe, Trash2, Eye } from "lucide-react";
+import { apiUrl } from "@/lib/base-path";
 
 const CATEGORIES = ["Initiative","Corporate","Infrastructure","Environment","Report","Operations","Education","Safety","Alert","News","Service Notice","Campaign"];
 const REGIONS    = ["All","Region A","Region B","Region C","Region D","Region E","Region F","Region G"];
@@ -32,7 +33,7 @@ export default function ArticleEditorPage() {
   // Load existing article
   useEffect(() => {
     if (isNew) return;
-    fetch(`/api/cms/articles/${id}`)
+    fetch(apiUrl(`/api/cms/articles/${id}`))
       .then((r) => r.json())
       .then((json) => {
         if (!json.article) { setNotFound(true); return; }
@@ -86,12 +87,12 @@ export default function ArticleEditorPage() {
 
     try {
       const res = isNew
-        ? await fetch("/api/cms/articles", {
+        ? await fetch(apiUrl("/api/cms/articles"), {
             method: "POST",
             headers: { "Content-Type": "application/json", Authorization: `Bearer ${CMS_TOKEN}` },
             body: JSON.stringify(payload),
           })
-        : await fetch(`/api/cms/articles/${id}`, {
+        : await fetch(apiUrl(`/api/cms/articles/${id}`), {
             method: "PUT",
             headers: { "Content-Type": "application/json", Authorization: `Bearer ${CMS_TOKEN}` },
             body: JSON.stringify(payload),
@@ -113,7 +114,7 @@ export default function ArticleEditorPage() {
 
   async function handleDelete() {
     if (!confirm("Delete this article permanently?")) return;
-    await fetch(`/api/cms/articles/${id}`, {
+    await fetch(apiUrl(`/api/cms/articles/${id}`), {
       method: "DELETE",
       headers: { Authorization: `Bearer ${CMS_TOKEN}` },
     });

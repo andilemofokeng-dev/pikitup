@@ -76,7 +76,7 @@
     { "id": "rm-waterval-1",   "name": "Debbie Du Preez",       "depot": "Waterval Depot",     "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Debbie+Du+Preez&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",   "order": 110 },
     { "id": "om-waterval-1",   "name": "Henry Lloyd",           "depot": "Waterval Depot",     "role": "Operations Manager", "imageUrl": "https://ui-avatars.com/api/?name=Henry+Lloyd&background=1e1b4b&color=a5b4fc&bold=true&size=200&format=png",       "order": 111 },
     { "id": "rm-zondi-1",      "name": "Sesi Moloi",            "depot": "Zondi Depot",        "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Sesi+Moloi&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",        "order": 120 },
-    { "id": "rm-misc-1",       "name": "Stella Wilson",         "depot": "—",                  "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Stella+Wilson&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",     "order": 130 }
+    { "id": "rm-avalon-2",     "name": "Stella Wilson",         "depot": "Avalon Depot",       "role": "Regional Manager",   "imageUrl": "https://ui-avatars.com/api/?name=Stella+Wilson&background=3b0764&color=d8b4fe&bold=true&size=200&format=png",     "order": 9 }
   ],
   "depots": [
     "Avalon Depot",

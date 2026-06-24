@@ -144,7 +144,7 @@ export default function SplashScreen() {
                 >
                   <div className="absolute inset-0 rounded-3xl ring-2 ring-white/20 pointer-events-none" />
                   <Image
-                    src="/pikitup-logo.png"
+                    src="/pikitup/pikitup-logo.png"
                     alt="Pikitup Johannesburg"
                     width={340}
                     height={120}

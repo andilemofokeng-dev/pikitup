@@ -2,6 +2,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Plus, Edit2, Trash2, AlertCircle, Bell, CheckCircle, Info, RefreshCw, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { apiUrl } from "@/lib/base-path";
 
 type NoticeType = "urgent" | "info" | "success" | "warning";
 
@@ -32,7 +33,7 @@ export default function NoticesPage() {
   const fetchNotices = useCallback(async () => {
     setLoading(true);
     try {
-      const res  = await fetch("/api/cms/notices");
+      const res  = await fetch(apiUrl("/api/cms/notices"));
       const json = await res.json() as { notices: Notice[] };
       setNotices(json.notices ?? []);
     } finally {
@@ -61,13 +62,13 @@ export default function NoticesPage() {
 
     if (editId) {
       const existing = notices.find((n) => n.id === editId);
-      await fetch(`/api/cms/notices/${editId}`, {
+      await fetch(apiUrl(`/api/cms/notices/${editId}`), {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${CMS_TOKEN}` },
         body: JSON.stringify({ ...payload, active: existing?.active ?? true }),
       });
     } else {
-      await fetch("/api/cms/notices", {
+      await fetch(apiUrl("/api/cms/notices"), {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${CMS_TOKEN}` },
         body: JSON.stringify({ ...payload, active: true }),
@@ -80,7 +81,7 @@ export default function NoticesPage() {
   }
 
   async function toggleActive(n: Notice) {
-    await fetch(`/api/cms/notices/${n.id}`, {
+    await fetch(apiUrl(`/api/cms/notices/${n.id}`), {
       method: "PUT",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${CMS_TOKEN}` },
       body: JSON.stringify({ title: n.title, body: n.body, type: n.type, region: n.region, active: !n.active, expiresAt: n.expiresAt }),
@@ -90,7 +91,7 @@ export default function NoticesPage() {
 
   async function handleDelete(id: string) {
     if (!confirm("Delete this notice?")) return;
-    await fetch(`/api/cms/notices/${id}`, {
+    await fetch(apiUrl(`/api/cms/notices/${id}`), {
       method: "DELETE",
       headers: { Authorization: `Bearer ${CMS_TOKEN}` },
     });

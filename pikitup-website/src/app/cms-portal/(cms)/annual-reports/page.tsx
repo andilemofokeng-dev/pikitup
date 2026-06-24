@@ -2,6 +2,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Plus, Edit2, Trash2, RefreshCw, X, Save, Download, Star, FileText, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { apiUrl } from "@/lib/base-path";
 
 const TOKEN = process.env.NEXT_PUBLIC_CMS_TOKEN ?? "";
 const AUTH  = { Authorization: `Bearer ${TOKEN}` };
@@ -27,8 +28,8 @@ const EMPTY_DOC: Omit<Doc,"id"> = {
 
 type Panel = { kind:"report"; item?:Report } | { kind:"doc"; item?:Doc } | null;
 
-function Field({ label, value, onChange, type="text", placeholder="", textarea=false }: {
-  label:string; value:string; onChange:(v:string)=>void; type?:string; placeholder?:string; textarea?:boolean;
+function Field({ label, value, onChange, type="text", placeholder="", textarea=false, required=false }: {
+  label:string; value:string; onChange:(v:string)=>void; type?:string; placeholder?:string; textarea?:boolean; required?:boolean;
 }) {
   const cls = "w-full bg-slate-800 border border-slate-700 text-sm text-slate-300 placeholder-slate-600 rounded-xl px-3 py-2.5 outline-none focus:border-violet-500 transition-colors";
   return (
@@ -171,7 +172,7 @@ export default function AnnualReportsCmsPage() {
 
   const load = useCallback(async()=>{
     setLoading(true);
-    const [r1,r2] = await Promise.all([fetch("/api/cms/annual-reports"), fetch("/api/cms/corporate-docs")]);
+    const [r1,r2] = await Promise.all([fetch(apiUrl("/api/cms/annual-reports")), fetch(apiUrl("/api/cms/corporate-docs"))]);
     const [j1,j2] = await Promise.all([r1.json(),r2.json()]);
     setReports(j1.reports??[]); setDocs(j2.docs??[]);
     setLoading(false);
@@ -181,26 +182,26 @@ export default function AnnualReportsCmsPage() {
 
   async function saveReport(data:Record<string,unknown>, id?:string){
     const method = id?"PUT":"POST";
-    const url    = id?`/api/cms/annual-reports/${id}`:"/api/cms/annual-reports";
+    const url    = id?apiUrl(`/api/cms/annual-reports/${id}`):apiUrl("/api/cms/annual-reports");
     const res    = await fetch(url,{method,headers:JAUTH,body:JSON.stringify(data)});
     if(!res.ok){ showToast("Save failed."); return; }
     showToast(id?"Report updated!":"Report added!"); setPanel(null); load();
   }
   async function deleteReport(id:string){
     if(!confirm("Delete this report?")) return;
-    await fetch(`/api/cms/annual-reports/${id}`,{method:"DELETE",headers:AUTH});
+    await fetch(apiUrl(`/api/cms/annual-reports/${id}`),{method:"DELETE",headers:AUTH});
     showToast("Deleted."); load();
   }
   async function saveDoc(data:Record<string,unknown>, id?:string){
     const method = id?"PUT":"POST";
-    const url    = id?`/api/cms/corporate-docs/${id}`:"/api/cms/corporate-docs";
+    const url    = id?apiUrl(`/api/cms/corporate-docs/${id}`):apiUrl("/api/cms/corporate-docs");
     const res    = await fetch(url,{method,headers:JAUTH,body:JSON.stringify(data)});
     if(!res.ok){ showToast("Save failed."); return; }
     showToast(id?"Document updated!":"Document added!"); setPanel(null); load();
   }
   async function deleteDoc(id:string){
     if(!confirm("Delete this document?")) return;
-    await fetch(`/api/cms/corporate-docs/${id}`,{method:"DELETE",headers:AUTH});
+    await fetch(apiUrl(`/api/cms/corporate-docs/${id}`),{method:"DELETE",headers:AUTH});
     showToast("Deleted."); load();
   }
 

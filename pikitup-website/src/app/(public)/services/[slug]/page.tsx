@@ -484,7 +484,7 @@ function AnimatedStat({ value, label, icon: Icon, accent }: {
   return (
     <div className="flex items-center gap-3 p-5 rounded-2xl" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
       <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(255,255,255,0.08)" }}>
-        <Icon className="w-5 h-5" style={{ color: accent }} />
+        <span style={{ color: accent }} className="flex"><Icon className="w-5 h-5" /></span>
       </div>
       <div>
         <p className="text-white font-black text-xl leading-none">{value}</p>
@@ -513,7 +513,7 @@ function SubServiceCard({ sub, accent, accentBg, accentBorder, index }: {
       <div className="flex items-start justify-between gap-2">
         <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110"
           style={{ background: accentBg, border: `1px solid ${accentBorder}` }}>
-          <Icon className="w-6 h-6" style={{ color: accent }} />
+          <span style={{ color: accent }} className="flex"><Icon className="w-6 h-6" /></span>
         </div>
         {sub.tag && (
           <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full whitespace-nowrap"
@@ -579,7 +579,7 @@ export default function ServiceDetailPage() {
             <div>
               {/* Icon badge */}
               <div className="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full" style={{ background: svc.accentBg, border: `1px solid ${svc.accentBorder}` }}>
-                <Icon className="w-5 h-5" style={{ color: svc.accentColor }} />
+                <span style={{ color: svc.accentColor }} className="flex"><Icon className="w-5 h-5" /></span>
                 <span className="text-sm font-bold" style={{ color: svc.accentColor }}>Pikitup Service</span>
               </div>
               <h1 className="text-4xl md:text-6xl font-black text-white mb-5 leading-[1.05]">
@@ -633,7 +633,7 @@ export default function ServiceDetailPage() {
             <ul className="space-y-3">
               {svc.features.map((f) => (
                 <li key={f} className="flex items-start gap-3 p-3 rounded-xl transition-colors hover:bg-white">
-                  <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0" style={{ color: svc.accentColor }} />
+                  <span style={{ color: svc.accentColor }} className="flex mt-0.5 shrink-0"><CheckCircle2 className="w-5 h-5" /></span>
                   <span className="text-gray-700 text-sm leading-relaxed">{f}</span>
                 </li>
               ))}
@@ -727,7 +727,7 @@ export default function ServiceDetailPage() {
                 const SI = s.icon;
                 return (
                   <div key={s.label} className="text-center p-4 rounded-2xl" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                    <SI className="w-6 h-6 mx-auto mb-3" style={{ color: svc.accentColor }} />
+                    <span style={{ color: svc.accentColor }} className="flex justify-center mb-3"><SI className="w-6 h-6" /></span>
                     <p className="text-white font-black text-xl leading-none">{s.value}</p>
                     <p className="text-xs mt-1.5 font-medium" style={{ color: "rgba(255,255,255,0.35)" }}>{s.label}</p>
                   </div>
@@ -776,7 +776,7 @@ export default function ServiceDetailPage() {
                     className="group flex items-start gap-4 p-5 rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-md transition-all bg-gray-50 hover:bg-white">
                     <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-110"
                       style={{ background: rel!.accentBg, border: `1px solid ${rel!.accentBorder}` }}>
-                      <RIcon className="w-5 h-5" style={{ color: rel!.accentColor }} />
+                      <span style={{ color: rel!.accentColor }} className="flex"><RIcon className="w-5 h-5" /></span>
                     </div>
                     <div>
                       <p className="font-black text-gray-900 text-sm mb-1 group-hover:text-current transition-colors">{rel!.title}</p>

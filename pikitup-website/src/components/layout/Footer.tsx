@@ -172,7 +172,7 @@ export default function Footer() {
                   background: "rgba(255,255,255,0.96)",
                   boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.12)",
                 }} className="rounded-2xl px-5 py-2.5 inline-flex items-center">
-                  <Image src="/pikitup-logo.png" alt="Pikitup Johannesburg" width={130} height={44}
+                  <Image src="/pikitup/pikitup-logo.png" alt="Pikitup Johannesburg" width={130} height={44}
                     className="object-contain" style={{ blockSize: "40px", inlineSize: "auto" }} />
                 </span>
               </Link>

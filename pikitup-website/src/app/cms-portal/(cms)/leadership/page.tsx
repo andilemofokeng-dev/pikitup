@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { apiUrl } from "@/lib/base-path";
 import {
   Plus, Edit2, Trash2, RefreshCw, X, Save,
   ChevronDown, ChevronRight, Users, Building2, Star,
@@ -170,7 +171,7 @@ export default function LeadershipCmsPage() {
   const load = useCallback(async ()=>{
     setLoading(true);
     try {
-      const r = await fetch("/api/admin/leadership");
+      const r = await fetch(apiUrl("/api/admin/leadership"));
       const j = await r.json() as Leadership;
       setData(j);
     } finally { setLoading(false); }
@@ -183,7 +184,7 @@ export default function LeadershipCmsPage() {
   async function handleSave(section:Section, item:Record<string,unknown>, id?:string) {
     const method = id ? "PUT" : "POST";
     const body   = id ? JSON.stringify({section, item:{...item,id}}) : JSON.stringify({section, item});
-    const res    = await fetch("/api/admin/leadership", { method, headers:JSON_HDR, body });
+    const res    = await fetch(apiUrl("/api/admin/leadership"), { method, headers:JSON_HDR, body });
     if (!res.ok) { showToast("Save failed."); return; }
     showToast(id ? "Updated!" : "Added!");
     setModal(null);
@@ -192,7 +193,7 @@ export default function LeadershipCmsPage() {
 
   async function handleDelete(section:Section, id:string) {
     if (!confirm("Delete this person? This cannot be undone.")) return;
-    await fetch("/api/admin/leadership", {
+    await fetch(apiUrl("/api/admin/leadership"), {
       method:"DELETE", headers:JSON_HDR,
       body: JSON.stringify({section,id}),
     });

@@ -1,63 +1,58 @@
-# Pikitup CMS — Strapi Setup
+# Pikitup CMS
 
-## Requirement
-Strapi requires Node.js >=20.0.0 and <=24.x.x.
-Your current environment has Node 26, so run this on a machine with Node 20 or 22 LTS.
+The CMS is built directly into the Next.js application — no separate Strapi installation is needed.
 
-## Quick Setup (fresh machine)
+Access it at: `https://amprodution.co.za/pikitup/cms-portal`
 
-```bash
-# 1. Install nvm (Node version manager)
-# https://github.com/nvm-sh/nvm
+---
 
-# 2. Install Node 22 LTS
-nvm install 22
-nvm use 22
+## What's included
 
-# 3. Scaffold Strapi in this directory
-cd pikitup-cms
-npx create-strapi-app@latest . --quickstart
+| Section | Path | Description |
+|---|---|---|
+| Dashboard | `/cms-portal` | Overview and quick stats |
+| News & Articles | `/cms-portal/articles` | Create, edit, publish articles |
+| Service Notices | `/cms-portal/notices` | Active service disruption notices |
+| Leadership | `/cms-portal/leadership` | Executives, GMs, depot managers |
+| Annual Reports | `/cms-portal/annual-reports` | Report library and corporate docs |
 
-# Or for PostgreSQL (recommended for production):
-npx create-strapi-app@latest . --dbclient=postgres --dbhost=localhost --dbport=5432 --dbname=pikitup_cms --dbusername=pikitup --dbpassword=yourpassword
+---
+
+## Authentication
+
+The CMS uses a shared token set via the `ADMIN_PASSWORD` environment variable (default: `pikitup2026`).
+
+Set the token in `.env.local` and `ecosystem.config.js`:
+
+```env
+ADMIN_PASSWORD=pikitup2026
+NEXT_PUBLIC_CMS_TOKEN=pikitup2026
 ```
 
-## Planned Content Types
+---
 
-| Content Type   | Fields                                                                         |
-|----------------|--------------------------------------------------------------------------------|
-| Article        | title, slug, body (rich text), category, region, publishedAt, author, featured |
-| ServiceNotice  | title, type (critical/warning/info), region, depot, body, publishedAt, active  |
-| Facility       | name, type, region, address, gps, hours, accepts[], status, phone, notice       |
-| Tender         | ref, title, type (Tender/RFQ), description, value, closingDate, status, docs[] |
-| Vacancy        | ref, title, department, type, location, closingDate, description, requirements  |
-| CollectionArea | suburb, region, depot, collectionDay, recyclingDay, gardenDay, notes           |
-| FaqItem        | question, answer, category, order                                              |
-| Homepage       | heroTitle, heroSubtitle, statItems[], featuredNoticeId                         |
+## API Routes
 
-## CMS User Roles (configure in Strapi admin)
+All CMS API routes live under `src/app/api/`:
 
-- Super Admin — full access
-- Content Editor — create/edit drafts
-- Communications Manager — publish articles and notices
-- Supply Chain Officer — manage tenders
-- HR Officer — manage vacancies
-- Facility Manager — manage facilities
-- Read-only — view only
-
-## API Integration (Next.js side)
-
-Set in `pikitup-website/.env.local`:
 ```
-NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
-STRAPI_API_TOKEN=your_api_token_here
+api/
+├── admin/
+│   ├── auth/route.ts           # Auth check
+│   └── leadership/route.ts     # Leadership CRUD
+└── cms/
+    ├── articles/route.ts
+    ├── articles/[id]/route.ts
+    ├── notices/route.ts
+    ├── notices/[id]/route.ts
+    ├── annual-reports/route.ts
+    ├── annual-reports/[id]/route.ts
+    ├── corporate-docs/route.ts
+    └── corporate-docs/[id]/route.ts
 ```
 
-Then fetch in Next.js:
-```ts
-const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/articles?populate=*`, {
-  headers: { Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}` },
-  next: { revalidate: 60 },
-});
-const { data } = await res.json();
-```
+---
+
+## Database
+
+All CMS content is stored in PostgreSQL via Prisma. See the root `README.md` for database setup instructions.

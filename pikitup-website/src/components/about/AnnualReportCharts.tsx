@@ -32,7 +32,7 @@ function ChartCard({ title, subtitle, children }: { title: string; subtitle: str
 }
 
 function CustomTooltip({ active, payload, label, unit }: {
-  active?: boolean; payload?: { name: string; value: number; color: string }[]; label?: string; unit?: string;
+  active?: boolean; payload?: readonly { name?: string; value?: number; color?: string }[]; label?: string | number; unit?: string;
 }) {
   if (!active || !payload?.length) return null;
   return (
@@ -84,7 +84,7 @@ export default function AnnualReportCharts() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
                 <XAxis dataKey="year" tick={{ fontSize: 11, fill: "#9ca3af" }} />
                 <YAxis domain={[1.3, 1.7]} tick={{ fontSize: 11, fill: "#9ca3af" }} tickFormatter={(v) => `${v}M`} />
-                <Tooltip content={(p) => <CustomTooltip {...p} unit="M t" />} />
+                <Tooltip content={(p) => <CustomTooltip active={p.active} payload={p.payload as never} label={p.label} unit="M t" />} />
                 <Area
                   type="monotone" dataKey="tonnes" name="Waste Collected"
                   stroke={GREEN} strokeWidth={2.5}
@@ -104,7 +104,7 @@ export default function AnnualReportCharts() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" vertical={false} />
                 <XAxis dataKey="year" tick={{ fontSize: 11, fill: "#9ca3af" }} />
                 <YAxis domain={[0, 15]} tick={{ fontSize: 11, fill: "#9ca3af" }} tickFormatter={(v) => `${v}%`} />
-                <Tooltip content={(p) => <CustomTooltip {...p} unit="%" />} />
+                <Tooltip content={(p) => <CustomTooltip active={p.active} payload={p.payload as never} label={p.label} unit="%" />} />
                 <Bar dataKey="recycling" name="Recycling Rate" fill={GOLD} radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
@@ -120,7 +120,7 @@ export default function AnnualReportCharts() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
                 <XAxis dataKey="year" tick={{ fontSize: 11, fill: "#9ca3af" }} />
                 <YAxis domain={[60, 90]} tick={{ fontSize: 11, fill: "#9ca3af" }} tickFormatter={(v) => `${v}%`} />
-                <Tooltip content={(p) => <CustomTooltip {...p} unit="%" />} />
+                <Tooltip content={(p) => <CustomTooltip active={p.active} payload={p.payload as never} label={p.label} unit="%" />} />
                 <Line
                   type="monotone" dataKey="fleet" name="Fleet Availability"
                   stroke={TEAL} strokeWidth={2.5}
@@ -140,7 +140,7 @@ export default function AnnualReportCharts() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" vertical={false} />
                 <XAxis dataKey="year" tick={{ fontSize: 11, fill: "#9ca3af" }} />
                 <YAxis domain={[50, 100]} tick={{ fontSize: 11, fill: "#9ca3af" }} tickFormatter={(v) => `${v}%`} />
-                <Tooltip content={(p) => <CustomTooltip {...p} unit="%" />} />
+                <Tooltip content={(p) => <CustomTooltip active={p.active} payload={p.payload as never} label={p.label} unit="%" />} />
                 <Bar dataKey="resolved" name="Resolved" fill={VIOLET} radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>

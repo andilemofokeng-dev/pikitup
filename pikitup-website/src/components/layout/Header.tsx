@@ -144,7 +144,7 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
               <Image
-                src="/pikitup-logo.png"
+                src="/pikitup/pikitup-logo.png"
                 alt="Pikitup Johannesburg"
                 width={120}
                 height={44}

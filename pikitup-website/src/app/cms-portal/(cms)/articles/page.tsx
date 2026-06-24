@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Plus, Search, Edit2, Trash2, Globe, Clock, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { apiUrl } from "@/lib/base-path";
 
 type ArticleStatus = "published" | "draft" | "scheduled";
 
@@ -33,7 +34,7 @@ export default function ArticlesPage() {
   const fetchArticles = useCallback(async () => {
     setLoading(true);
     try {
-      const res  = await fetch("/api/cms/articles");
+      const res  = await fetch(apiUrl("/api/cms/articles"));
       const json = await res.json() as { articles: Article[] };
       setArticles(json.articles ?? []);
     } finally {
@@ -46,7 +47,7 @@ export default function ArticlesPage() {
   async function handleDelete(id: string) {
     if (!confirm("Delete this article? This cannot be undone.")) return;
     setDeleting(id);
-    await fetch(`/api/cms/articles/${id}`, {
+    await fetch(apiUrl(`/api/cms/articles/${id}`), {
       method: "DELETE",
       headers: { Authorization: `Bearer ${CMS_TOKEN}` },
     });

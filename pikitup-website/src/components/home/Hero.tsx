@@ -171,7 +171,7 @@ export default function Hero() {
               {/* Card inner glow edge */}
               <div className="absolute inset-0 rounded-3xl ring-1 ring-white/60 pointer-events-none" />
               <Image
-                src="/pikitup-logo.png"
+                src="/pikitup/pikitup-logo.png"
                 alt="Pikitup Johannesburg"
                 width={420}
                 height={140}
