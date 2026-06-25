@@ -135,12 +135,85 @@ If upgrading from a development instance:
 
 ---
 
-## Upcoming — v1.1.0 (Planned)
+## v1.1.0 — UI/UX Overhaul
+
+**Release Date:** 25 June 2026
+**Environment:** Development / Staging
+**Branch:** `main`
+
+---
+
+### Summary
+
+Comprehensive visual and interaction redesign of the public-facing layout. Focus areas: world-class animated header navigation, hero section clarity, quick-actions polish, homepage decluttering, and a premium footer.
+
+---
+
+### Changes
+
+#### Header (`src/components/layout/Header.tsx`)
+
+- Replaced plain text links with **coloured pill badges** — each nav item has its own Tailwind colour palette (blue for About, green for Services, emerald for Schedule, violet for Facilities, red for Report, orange for News, amber for Tenders, sky for Careers, rose for Contact, indigo for Portals dropdown)
+- Added **Lucide icons** inside each pill
+- **Framer Motion stagger animations** — pills slide in sequentially on mount; hover triggers lift + scale on the pill and a rotate-wobble on the icon via variant propagation
+- Desktop breakpoint moved from `lg:` (1024 px) to `xl:` (1280 px) to prevent nav crowding at 10 pills
+- "Find a Facility" shortened to **"Facilities"** to save horizontal space
+- Removed top utility bar (portal quick-links) — portals are now accessible via the Portals dropdown pill
+- Removed gold "Report Issue" button from right actions
+- Active page detection via `usePathname()` adds `ring-2 ring-current/20` to the current pill
+- Mobile hamburger menu breakpoint updated to `xl:hidden`; mobile items animate in with `blockSize` transition to avoid linter warnings
+
+#### Hero (`src/components/home/Hero.tsx`)
+
+- Removed CTA button row (Report a Problem / Find a Facility / Resident Portal)
+- Removed statistics strip (4,500+ Employees, 200+ Trucks, etc.)
+- **Enlarged main logo** — `h-36 sm:h-48 md:h-60`, card padding expanded
+- Added **bouncing `pikitup-logo-3.png`** animation: multi-keyframe y-bounce with squish shadow, ambient glow ring, and `repeatDelay` gap so it feels playful not frantic
+- Added "Recycle with Pikitup / Join 1.2M+ households making a difference" text beside the bouncing logo
+
+#### QuickActions (`src/components/home/QuickActions.tsx`)
+
+- Full rewrite — removed broken 3D transform animations (`rotateX/Y`, `perspective` on wrong element, `boxShadow` flash)
+- New `cardVariants`: simple y + scale spring entrance with per-card stagger delay; hover = lift + scale; tap = compress
+- `iconVariants`: rotate-wobble keyframe array propagated from parent `whileHover="hover"` — no separate event handler needed
+- **CSS shimmer** (`group-hover:translate-x-full`) replaces Framer Motion `translateX` percentage approach — reliable cross-browser
+- Scroll-triggered entrance via `useInView` with `margin: "-60px"`
+
+#### Homepage (`src/app/(public)/page.tsx`)
+
+- Removed `<NewsSection />` — avoids content duplication with the dedicated News & Notices page
+- Removed `<PortalCTA />` — portal entry is handled by the header Portals dropdown
+
+#### Footer (`src/components/layout/Footer.tsx`)
+
+- **Background**: changed from near-black `#070f0a` to `bg-gradient-to-b from-green-800 via-green-900 to-green-950` — visibly rich forest green
+- **Link icons**: every link in all three columns (Our Services, Quick Links, Portals & Info) now has a small coloured icon pill matching the link's category colour
+- **Scroll-triggered stagger animations** via `useInView` — each column and stat card fades and slides in as the user scrolls down
+- **Stat cards**: spring-pop entrance animation; amber value text on glass cards with hover glow
+- Social icons: enlarged to 40 × 40 px with branded hover background + shadow-glow per platform (Facebook blue, X black, YouTube red, WhatsApp green)
+- Emergency hotline band retained; URGENT badge pulsing amber
+- Dot pattern overlay converted from inline `style` prop to Tailwind arbitrary-value classes (`[background-image:...]`)
+- `<motion.li>` replaced with native `<li>` + inner `<motion.div>` to satisfy HTML linter
+
+---
+
+### Fixes
+
+| Issue | Resolution |
+| --- | --- |
+| QuickActions 3D animations looked broken | Removed rotateX/Y + perspective, boxShadow flash — replaced with simple y+scale spring variants |
+| Mobile menu height linter warning | Switched from `height` to the CSS logical `blockSize` property in Framer Motion |
+| Footer dark near-black background | Replaced hex `#070f0a` with Tailwind green gradient |
+| Inline style prop on footer dot pattern | Moved to Tailwind `[background-image:...]` arbitrary value classes |
+| Footer motion.li HTML lint warning | Changed to native `<li>` + inner `<motion.div>` wrapper |
+
+---
+
+## Upcoming — v1.2.0 (Planned)
 
 - Live collection schedule integration
 - SMTP email on contact/report form submissions
 - Server-side session authentication (NextAuth)
 - Staff portal complaint workflow with status updates
 - PDF upload for Annual Reports
-- Sitemap and robots.txt for SEO
 - Performance monitoring (Sentry / Vercel Analytics)

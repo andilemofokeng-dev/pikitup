@@ -99,8 +99,8 @@ pikitup-website/
 │   │   └── admin-portal/          # Admin auth + system dashboard
 │   │
 │   ├── components/
-│   │   ├── layout/                # Header, Footer (sticky nav, emergency band)
-│   │   ├── home/                  # Hero, QuickActions, PortalCTA, ImpactInfographic
+│   │   ├── layout/                # Header (pill nav + icons + Framer Motion), Footer (green gradient, icon links, scroll animations)
+│   │   ├── home/                  # Hero (bouncing logo), QuickActions (spring cards), ImpactInfographic, RecyclingCTA
 │   │   ├── about/                 # AboutNavBar, AnnualReportCharts (Recharts)
 │   │   └── ui/                    # Button, animate (FadeIn/Stagger), shared primitives
 │   │
@@ -235,7 +235,7 @@ npm run db:studio
 - **Bearer token CMS auth** — Lightweight stateless auth for all CMS/admin API routes
 - **Turbopack** — Sub-2-second hot module replacement in development
 - **Recharts** — Interactive 4-panel performance trend charts (Annual Reports page)
-- **Framer Motion** — Page-level animations and dropdown transitions
+- **Framer Motion** — Component animations: pill stagger, spring cards, scroll-triggered reveals, hover variant propagation
 - **Radix UI** — Accessible, headless component primitives (Accordion, Dialog, Tabs, Select)
 - **Google Maps + Leaflet** — Dual-map strategy for facility finder
 

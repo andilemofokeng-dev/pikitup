@@ -6,8 +6,6 @@ import ServicesGrid from "@/components/home/ServicesGrid";
 import StatsSection from "@/components/home/StatsSection";
 import ImpactInfographic from "@/components/home/ImpactInfographic";
 import RecyclingCTA from "@/components/home/RecyclingCTA";
-import NewsSection from "@/components/home/NewsSection";
-import PortalCTA from "@/components/home/PortalCTA";
 
 export const metadata: Metadata = {
   title: "Pikitup Johannesburg | Official Integrated Waste Management",
@@ -26,8 +24,6 @@ export default function HomePage() {
       <StatsSection />
       <ImpactInfographic />
       <RecyclingCTA />
-      <NewsSection />
-      <PortalCTA />
     </>
   );
 }

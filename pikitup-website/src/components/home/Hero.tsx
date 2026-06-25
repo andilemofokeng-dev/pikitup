@@ -1,11 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
-  Search, ArrowRight, Shield, ChevronDown,
+  Search, Shield, ChevronDown,
   Trash2, MapPin, AlertTriangle, Phone,
 } from "lucide-react";
 
@@ -20,6 +20,12 @@ const floatingBadges = [
 
 export default function Hero() {
   const [query, setQuery] = useState("");
+  const router = useRouter();
+
+  function handleSearch() {
+    const q = query.trim();
+    router.push(q ? `/collection-schedule?q=${encodeURIComponent(q)}` : "/collection-schedule");
+  }
 
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-green-950">
@@ -166,17 +172,17 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative bg-white rounded-3xl px-5 py-4 sm:px-10 sm:py-7 shadow-2xl shadow-black/40"
+              className="relative bg-white rounded-3xl px-8 py-6 sm:px-14 sm:py-9 shadow-2xl shadow-black/40"
             >
               {/* Card inner glow edge */}
               <div className="absolute inset-0 rounded-3xl ring-1 ring-white/60 pointer-events-none" />
               <Image
-                src="/pikitup/pikitup-logo.png"
+                src="/pikitup-logo.png"
                 alt="Pikitup Johannesburg"
-                width={420}
-                height={140}
+                width={560}
+                height={180}
                 priority
-                className="relative h-28 sm:h-36 md:h-44 w-auto object-contain"
+                className="relative h-36 sm:h-48 md:h-60 w-auto object-contain"
               />
             </motion.div>
           </motion.div>
@@ -195,77 +201,93 @@ export default function Hero() {
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSearch()}
                   placeholder="Your suburb or street..."
                   className="flex-1 outline-none text-gray-800 text-sm bg-transparent placeholder:text-gray-400 min-w-0"
                 />
               </div>
-              <Link href={`/collection-schedule${query ? `?q=${encodeURIComponent(query)}` : ""}`}>
-                <Button variant="gold" className="shrink-0 font-bold shadow-lg text-sm">
-                  <span className="hidden sm:inline">Find My Collection Day</span>
-                  <span className="sm:hidden">Search</span>
-                </Button>
-              </Link>
+              <Button
+                variant="gold"
+                onClick={handleSearch}
+                className="shrink-0 font-bold shadow-lg text-sm"
+              >
+                <span className="hidden sm:inline">Find My Collection Day</span>
+                <span className="sm:hidden">Search</span>
+              </Button>
             </div>
           </motion.div>
 
-          {/* CTA row */}
+          {/* Dancing recycling bin */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.65, ease: EASE }}
-            className="flex flex-wrap gap-3 mb-10 sm:mb-14"
+            className="flex items-center gap-4 mb-10 sm:mb-14"
           >
-            <Link href="/report">
-              <Button variant="white" size="lg" className="group shadow-xl">
-                Report a Problem
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-              </Button>
-            </Link>
-            <Link href="/find-facility">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 hover:border-white/60"
+            {/* Bouncing recycling logo */}
+            <div className="relative shrink-0">
+              {/* Glow ring */}
+              <motion.div
+                aria-hidden
+                className="absolute -inset-4 rounded-full bg-green-400/30 blur-2xl"
+                animate={{ scale: [1, 1.4, 1], opacity: [0.35, 0.8, 0.35] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+              {/* Bounce */}
+              <motion.div
+                animate={{
+                  y:     [0, -18, 0, -12, 0, -6, 0],
+                  scale: [1, 1.06, 0.97, 1.04, 0.98, 1.02, 1],
+                }}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  repeatDelay: 1.2,
+                  ease: [0.33, 1, 0.68, 1],
+                }}
+                className="relative"
               >
-                Find a Facility
-              </Button>
-            </Link>
-            <Link href="/resident-portal">
-              <Button
-                size="lg"
-                variant="ghost"
-                className="text-green-200 hover:text-white hover:bg-white/10"
+                <Image
+                  src="/pikitup-logo-3.png"
+                  alt="Recycle — Reduce, Re-use, Rethink"
+                  width={200}
+                  height={200}
+                  className="w-40 h-40 object-contain drop-shadow-2xl filter brightness-110"
+                />
+              </motion.div>
+
+              {/* Shadow squish on the floor — compresses when logo lands */}
+              <motion.div
+                aria-hidden
+                animate={{
+                  scaleX:  [1, 1.3, 0.8, 1.2, 0.9, 1.1, 1],
+                  opacity: [0.4, 0.15, 0.55, 0.2, 0.5, 0.3, 0.4],
+                }}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  repeatDelay: 1.2,
+                  ease: [0.33, 1, 0.68, 1],
+                }}
+                className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-3 bg-black/30 rounded-full blur-sm"
+              />
+            </div>
+
+            {/* Text */}
+            <div>
+              <motion.p
+                className="text-white font-bold text-base sm:text-lg leading-tight"
+                animate={{ opacity: [0.85, 1, 0.85] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                Resident Portal
-              </Button>
-            </Link>
+                Recycle with Pikitup
+              </motion.p>
+              <p className="text-green-300/90 text-sm mt-0.5">
+                Join 1.2M+ households making a difference
+              </p>
+            </div>
           </motion.div>
 
-          {/* Stats strip */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-wrap gap-4 sm:gap-8 pt-6 sm:pt-8 border-t border-white/10"
-          >
-            {[
-              { value: "4,500+", label: "Employees" },
-              { value: "200+",   label: "Trucks" },
-              { value: "12",     label: "Depots" },
-              { value: "44",     label: "Garden Sites" },
-              { value: "6,000t", label: "Collected Daily" },
-            ].map((s, i) => (
-              <motion.div
-                key={s.label}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.85 + i * 0.08, duration: 0.5, ease: EASE }}
-              >
-                <div className="text-2xl font-black text-yellow-300">{s.value}</div>
-                <div className="text-xs text-green-300 mt-0.5">{s.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </div>
 
